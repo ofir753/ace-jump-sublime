@@ -212,11 +212,6 @@ class AceJumpCommand(sublime_plugin.WindowCommand):
 
             self.views.remove(view)
 
-        set_views_syntax(self.all_views, list(itertools.repeat(
-            "Packages/AceJump/AceJump.tmLanguage",
-            len(self.all_views)
-        )))
-
         set_views_settings(
             self.all_views,
             self.view_settings,
