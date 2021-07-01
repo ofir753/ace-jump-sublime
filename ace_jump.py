@@ -362,23 +362,67 @@ class AceJumpWithinLineCommand(AceJumpCommand):
         return "current_line"
 
 
-class AceJumpSelectCommand(sublime_plugin.WindowCommand):
+class AceJumpSelectCommand(AceJumpWordCommand):
     """Command for turning on select mode"""
 
-    def run(self):
+    def run(self, *args, **kwargs):
         global mode
 
-        mode = 0 if mode == 1 else 1
+        mode = 1
+
+        super().run(*args, **kwargs)
+
+class AceJumpLineSelectCommand(AceJumpLineCommand):
+    """Command for turning on select mode"""
+
+    def run(self, *args, **kwargs):
+        global mode
+
+        mode = 1
+
+        super().run(*args, **kwargs)
+
+class AceJumpWithinLineSelectCommand(AceJumpWithinLineCommand):
+    """Command for turning on select mode"""
+
+    def run(self, *args, **kwargs):
+        global mode
+
+        mode = 1
+
+        super().run(*args, **kwargs)
 
 
-class AceJumpAddCursorCommand(sublime_plugin.WindowCommand):
+class AceJumpAddCursorCommand(AceJumpWordCommand):
     """Command for turning on multiple cursor mode"""
 
-    def run(self):
+    def run(self, *args, **kwargs):
         global mode
 
-        mode = 0 if mode == 2 else 2
+        mode = 2
 
+        super().run(*args, **kwargs)
+
+class AceJumpAddCursorLineCommand(AceJumpLineCommand):
+    """Command for turning on multiple cursor mode"""
+
+    def run(self, *args, **kwargs):
+        global mode
+
+        mode = 2
+
+        super().run(*args, **kwargs)
+
+
+class AceJumpWithinLineAddCursorCommand(AceJumpWithinLineCommand):
+    """Command for turning on select mode"""
+
+    def run(self, *args, **kwargs):
+        global mode
+
+        mode = 2
+
+        super().run(*args, **kwargs)
 
 class AceJumpAfterCommand(sublime_plugin.WindowCommand):
     """Modifier-command which lets you jump behind a character, word or line"""
