@@ -27,7 +27,10 @@ def get_active_views(window, current_buffer_only):
         views.append(window.active_view())
     else:
         for group in range(window.num_groups()):
-            views.append(window.active_view_in_group(group))
+            if window.active_group() == group:
+                views.insert(0, window.active_view_in_group(group))
+            else:
+                views.append(window.active_view_in_group(group))
     return views
 
 
